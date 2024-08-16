@@ -1,8 +1,12 @@
-<app-header></app-header>
-<div *ngFor="let item of data">
+<app-layout>
+  <div *ngFor="let item of data">
     <h1>Intervalo: {{ item.intervalo }}</h1>
     <p>Limite inferior da classe: {{ item.limiteInferior }}</p>
     <p>Limite superior da classe: {{ item.limiteSuperior }}</p>
     <p>Freqência: {{ item.totalDeItens }}</p>
-</div>
-<app-footer></app-footer>
+  </div>
+  <app-grafico-pizza
+    [labelsGrafico]="labelsDoGrafico"
+    [valoresGrafico]="valoresDoGrafico"
+  ></app-grafico-pizza>
+</app-layout>
