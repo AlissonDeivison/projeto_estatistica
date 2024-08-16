@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import 'material-icons/iconfont/material-icons.css';
+
 
 
 @Component({
