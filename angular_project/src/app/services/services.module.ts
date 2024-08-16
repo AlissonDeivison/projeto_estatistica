@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './data.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   providers: [DataService, provideHttpClient(withInterceptorsFromDi())]
 })
