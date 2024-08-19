@@ -6,7 +6,7 @@
   display: flex;
 
   background-color: $cor-secundaria;
-  color: $cor-destaque;
+  color: $cor-texto;
 
   border-radius: 4px;
 
@@ -14,9 +14,16 @@
 
   margin: 0 48px;
 
-  width: 400px;
+  width: 300px;
 
   & .card {
     margin: 24px;
+    width: 100%;
+    text-align: center;
+
+    & p {
+      font-size: 16px;
+    }
   }
+
 }
