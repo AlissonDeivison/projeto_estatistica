@@ -1,0 +1,44 @@
+@import 'variables';
+
+.formulario {
+  background-color: $cor-terciaria;
+  padding: 24px;
+  border-radius: 24px;
+  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.527));
+  height: 200px;
+
+  & div {
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      color: $cor-texto-destaque;
+      font-size: 12px;
+      font-family: $fonte-primaria;
+      margin-bottom: 8px;
+
+    }
+
+    & input {
+      background-color: $cor-terciaria;
+      border: 1px solid $cor-texto-secundario;
+      border-radius: 8px;
+      padding: 8px;
+    }
+  }
+
+  & button {
+    background-color: $cor-primaria;
+    color: $cor-texto;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: $fonte-primaria;
+    font-size: 12px;
+    cursor: pointer;
+
+    width: 100%;
+  }
+}
