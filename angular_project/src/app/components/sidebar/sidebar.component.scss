@@ -1,0 +1,94 @@
+@import "variables";
+
+aside {
+  position: fixed;
+  left: 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 240px;
+  height: calc(100vh - 200px);
+
+  background-color: $cor-terciaria;
+  transition: width 0.3s;
+
+  z-index: 9999;
+
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  border-radius: 0 20px 20px 0;
+
+  &:hover {
+    overflow-y: visible;
+  }
+
+  &.open {
+    width: 0;
+  }
+
+  .avatar {
+    margin-top: 24px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+
+    & img {
+      border-radius: 100%;
+      height: 100%;
+      filter: drop-shadow(2px 4px 6px black);
+    }
+
+  }
+
+  h3 {
+    color: $cor-texto-destaque;
+    margin: 18px 0 0 ;
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+  }
+  p{
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    color: $cor-texto-destaque;
+    font-weight: 300;
+  }
+}
+
+// Scrollbar
+aside::-webkit-scrollbar {
+  position: absolute;
+  width: 4px;
+}
+
+aside::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+aside::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 430px) {
+  aside {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  aside {
+    .section1 {
+      ul {
+        .logout-btn {
+          display: flex;
+        }
+      }
+    }
+  }
+}
