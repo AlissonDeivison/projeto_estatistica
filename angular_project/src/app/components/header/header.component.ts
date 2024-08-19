@@ -24,5 +24,7 @@ export class HeaderComponent implements OnInit {
     this.dataService.logout();
     this.router.navigate(['']);
   }
-
+  redirectTo(route: string) {
+    this.router.navigate([route]);
+  }
 }
