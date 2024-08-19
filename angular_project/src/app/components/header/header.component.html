@@ -1,8 +1,22 @@
 <header>
-  <section class="botoes"></section>
-  <section class="icone"></section>
-  <section class="buscar">
-    <span class="material-icons">search</span>
-    <input type="text" />
-  </section>
+  <div class="conteudo_principal">
+    <button
+      type="button"
+      mat-button
+      (click)="toggleSidebar()"
+      [class.open]="isOpen"
+    >
+      <span class="material-symbols-outlined"> menu </span>
+    </button>
+    <div class="logos">
+      <figure>
+        <img src="assets/logos/unifacisaColoredLogo.svg" alt="logo unifacisa" />
+      </figure>
+    </div>
+  </div>
+  <div>
+    <button class="logout" (click)="logout()">
+      <span class="material-symbols-outlined"> logout </span>
+    </button>
+  </div>
 </header>
