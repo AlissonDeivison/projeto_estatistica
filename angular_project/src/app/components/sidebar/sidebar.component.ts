@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
 import { DataService } from '../../services/data.service';
 import { ServicesModule } from '../../services/services.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -24,12 +25,15 @@ import { ServicesModule } from '../../services/services.module';
 })
 export class SidebarComponent implements OnInit {
   isOpen = false;
-  constructor(private sidebarService: SidebarService, private dataService:DataService) {}
+  constructor(private sidebarService: SidebarService, private dataService:DataService, private router: Router) {}
 
   ngOnInit() {
     this.sidebarService.sidebarOpen$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
+  }
+  redirectTo(route: string) {
+    this.router.navigate([route]);
   }
   
 

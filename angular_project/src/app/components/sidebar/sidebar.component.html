@@ -1,11 +1,18 @@
-
-
 <div class="sidenav-content">
   <aside [class.open]="isOpen">
-      <figure class="avatar">
-        <img src="assets/avatar/alisson.svg" alt="Logo" />
-        <h3>ALISSON DEIVISON</h3>
-        <p>Desenvolvedor Front-end</p>
-      </figure>
+    <figure class="avatar">
+      <img src="assets/avatar/alisson.svg" alt="Logo" />
+      <h3>ALISSON DEIVISON</h3>
+      <p>Desenvolvedor Front-end</p>
+    </figure>
+    <div class="opcoes">
+      <ol>
+        <li (click)="redirectTo('/caso-de-uso')"><p>Caso de uso</p></li>
+        <li (click)="redirectTo('/intervalos')"><p>Intervalos observados</p></li>
+        <li><p>Cálculo de média</p></li>
+        <li><p>Cálculo de moda</p></li>
+        <li><p>Cálculo de mediana</p></li>
+      </ol>
+    </div>
   </aside>
 </div>
