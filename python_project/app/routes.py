@@ -12,15 +12,6 @@ def index():
     return 'Rotas disponíveis: /api/intervalos; /api/intervalos/<string:nome>'
 
 
-# Define uma rota para /api/intervalos
-@main.route('/api/intervalos', methods=['GET'])
-def get_intervalos():
-    # Simula um dicionário de intervalos
-    dados = [{'nome': '0-10'}, {'nome': '11-20'}, {'nome': '21-30'}, {'nome': '31-40'}, {'nome': '41-50'},
-             {'nome': '51-60'}, {'nome': '61-70'}, {'nome': '71-80'}, {'nome': '81-90'}, {'nome': '91-100'}]
-    return jsonify(dados)
-
-
 @main.route('/api/intervalos/idade', methods=['GET'])
 def get_intervalos_teste():
 
