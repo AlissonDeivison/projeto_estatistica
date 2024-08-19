@@ -1,0 +1,51 @@
+@import 'variables';
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: padding-left 0.3s;
+  margin-top: 24px;
+  padding: 24px;
+  text-align: justify;
+  margin-left: 24px;
+
+  & .kaggle_info {
+    & figure {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+
+      & img {
+        width: 40%;
+      }
+    }
+  }
+
+  & .sobre_data{
+    & a {
+        text-decoration: none;  
+        color: $cor-primaria;
+        border: 1px solid $cor-primaria;
+        padding: 8px;
+        border-radius: 4px
+    }
+    & a:visited {
+        color: $cor-primaria;
+    }
+  }
+
+  &.open {
+    padding-left: 240px;
+  }
+
+
+  &--inner {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(100% - 280px);
+    max-width: 100%;
+  }
+}
