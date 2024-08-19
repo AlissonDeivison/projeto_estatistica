@@ -1,3 +1,8 @@
 <app-header></app-header>
-<ng-content></ng-content>
-<app-footer></app-footer>
+<app-sidebar></app-sidebar>
+<div class="main-content" [class.open]="isOpen">
+  <app-container class="container" [class.open]="isOpen">
+    <ng-content></ng-content>
+  </app-container>
+  <app-footer></app-footer>
+</div>
