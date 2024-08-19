@@ -7,23 +7,31 @@ import { CommonModule } from '@angular/common';
 import { Intervalo } from '../../interfaces/intervalo';
 import { GraficoPizzaComponent } from "../../components/grafico-pizza/grafico-pizza.component";
 import { LayoutComponent } from "../../components/layout/layout.component";
+import { CardComponent } from "./card/card.component";
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, ServicesModule, CommonModule, GraficoPizzaComponent, LayoutComponent],
+  imports: [HeaderComponent, FooterComponent, ServicesModule, CommonModule, GraficoPizzaComponent, LayoutComponent, CardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  isOpen = false;
+  user : any;
   public data: Intervalo[] = [];
   public labelsDoGrafico: string[] = [];
   public valoresDoGrafico: number[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private sidebarService: SidebarService) {}
 
   ngOnInit() {
     this.carregarDados();
+    this.sidebarService.sidebarOpen$.subscribe((isOpen) => {
+      this.isOpen = isOpen;
+    });
+
   }
 
   carregarDados() {
@@ -34,4 +42,6 @@ export class HomeComponent implements OnInit {
       console.log(this.labelsDoGrafico);
     });
   }
+ 
+
 }
