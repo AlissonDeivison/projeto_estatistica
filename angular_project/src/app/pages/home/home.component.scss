@@ -6,6 +6,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: padding-left 0.3s;
+    margin-top: 24px;
 
   
     &.open {
@@ -29,7 +30,11 @@
       flex-basis: calc(100% - 280px);
       max-width: 100%;
     }
-  
+    
+    & app-card {
+      display: flex;
+      justify-content: space-around;
+    }
 
   }
   // Responsividade

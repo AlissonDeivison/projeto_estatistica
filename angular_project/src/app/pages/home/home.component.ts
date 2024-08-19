@@ -20,6 +20,7 @@ import { SidebarService } from '../../services/sidebar.service';
 export class HomeComponent implements OnInit {
   isOpen = false;
   user : any;
+  
   public data: Intervalo[] = [];
   public labelsDoGrafico: string[] = [];
   public valoresDoGrafico: number[] = [];
@@ -31,9 +32,8 @@ export class HomeComponent implements OnInit {
     this.sidebarService.sidebarOpen$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
-
   }
-
+  
   carregarDados() {
     this.dataService.getdata('intervalos/idade').subscribe((res: any) => {
       this.data = res;
