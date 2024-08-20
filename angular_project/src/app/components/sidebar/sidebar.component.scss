@@ -1,8 +1,9 @@
 @import "variables";
 
 aside {
-  position: fixed;
+  position: relative;
   left: 0px;
+  top: 0px;
 
   display: flex;
   flex-direction: column;
