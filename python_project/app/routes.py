@@ -27,6 +27,17 @@ def get_intervalos_teste():
     return jsonify(intervalos)
 
 
+@main.route('/api/intervalos/idade/media', methods=['GET'])
+def get_media_geral():
+
+    dados = dataManipulation.carregar_dados()
+    media_geral = dataManipulation.calcular_media_idade(dados)
+   
+
+    media_geral_json = {'media_geral': media_geral}
+    return jsonify(media_geral_json)
+
+
 @main.route('/api/login', methods=['POST'])
 def login():
     try:
@@ -53,3 +64,5 @@ def login():
         # Loga o erro para depuração
         print(f'Erro no login: {e}')
         return jsonify({'mensagem': 'Erro interno no servidor'}), 500
+
+# @main.rout('/api/genero', methods=['GET'])

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 def carregar_dados():
     return pd.read_csv('data/data.csv')
 
-
 #Função para carregar a média de um intervalo
 def calcular_media_intervalo(intervalo):
     if '-' in intervalo:
@@ -16,19 +15,6 @@ def calcular_media_intervalo(intervalo):
         # Retorna None para intervalos que não devem ser considerados
         return None
 
-#Função para gerar o gráfico
-def gerar_grafico(contagem_intervalos):
-    # Cria um gráfico de barras para a contagem dos intervalos usando Seaborn
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x=contagem_intervalos.index,
-                y=contagem_intervalos.values, palette='coolwarm')
-    plt.title('Contagem de Intervalos de Idade')
-    plt.xlabel('Intervalo de Idade')
-    plt.ylabel('Número de Entradas')
-    plt.xticks(rotation=45)
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.show()
 
 #Função para exibir os resultados
 def exibir_resultados(resultado):
@@ -75,4 +61,14 @@ def calcular_media_idade(dados):
     dados_filtrados = dados.dropna(subset=['Media Idade'])
     # Calcula a média geral das idades, ignorando valores nulos
     media_geral = dados_filtrados['Media Idade'].mean()
-    return media_geral
+    return media_geral.round(2)
+
+#Função para calcular a % do genero dos intrevistados
+def calcular_percentual_genero(dados):
+    # Conta o número de itens em cada categoria
+    contagem_genero = dados['Gender'].value_counts()
+    # Calcula o total de itens
+    total_de_itens = contagem_genero.sum()
+    # Calcula a porcentagem de cada categoria
+    percentual_genero = contagem_genero / total_de_itens * 100
+    return percentual_genero
