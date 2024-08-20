@@ -5,24 +5,30 @@ import { Intervalo } from '../../interfaces/intervalo';
 import { CardsComponent } from './cards/cards.component';
 import { DataService } from '../../services/data.service';
 import { GraficoPizzaComponent } from '../../components/grafico-pizza/grafico-pizza.component';
+import { GraficoPolarComponent } from "../../components/grafico-polar/grafico-polar.component";
+import { Universidade } from '../../interfaces/universidade';
 
 @Component({
   selector: 'app-intervalos',
   standalone: true,
-  imports: [LayoutComponent, CardsComponent, GraficoPizzaComponent],
+  imports: [LayoutComponent, CardsComponent, GraficoPizzaComponent, GraficoPolarComponent],
   templateUrl: './intervalos.component.html',
   styleUrl: './intervalos.component.scss',
 })
 export class IntervalosComponent implements OnInit {
   public totalDeItens: number = 0;
+  public amplitude: number = 0;
+  public idadeMinima: number = 0;
+  public idadeMaxima: number = 0;
 
   isOpen = false;
 
   public data: Intervalo[] = [];
   public labelsDoGraficoPizza: string[] = [];
   public valoresDoGraficoPizza: number[] = [];
-
   public media: number = 0;
+
+  public universidades: Universidade[] = [];
 
   constructor(
     private sidebarService: SidebarService,
@@ -34,7 +40,7 @@ export class IntervalosComponent implements OnInit {
       this.isOpen = isOpen;
     });
     this.verificarIntervalo();
-    
+    this.obterUniversidades();
   }
 
   verificarIntervalo() {
@@ -42,10 +48,10 @@ export class IntervalosComponent implements OnInit {
       this.data = res;
       this.labelsDoGraficoPizza = this.data.map((item) => item.intervalo);
       this.valoresDoGraficoPizza = this.data.map((item) => item.totalDeItens);
-      console.log(this.labelsDoGraficoPizza);
       this.verificarTotalDeItens();
     });
     this.obterMediaDeIdade();
+    this.obterAmplitude();
   }
 
   obterMediaDeIdade() {
@@ -57,9 +63,22 @@ export class IntervalosComponent implements OnInit {
   verificarTotalDeItens() {
     if (this.data.length > 0) {
       for (let i = 0; i < this.data.length; i++) {
-        console.log(this.data[i].totalDeItens);
         this.totalDeItens += this.data[i].totalDeItens;
       }
     }
+  }
+
+  obterAmplitude(){
+    this.dataService.getdata('intervalos/idade/amplitude').subscribe((res: any) => {
+      this.amplitude = res.amplitude;
+      this.idadeMinima = res.minimo;
+      this.idadeMaxima = res.maximo;
+    });
+  }
+
+  obterUniversidades(){
+    this.dataService.getdata('intervalos/universidade').subscribe((res: any) => {
+      this.universidades = res;
+    });
   }
 }

@@ -2,18 +2,29 @@
   <div class="content" [class.open]="!isOpen">
     <h2>Intervalos observados</h2>
     <app-cards [data]="data"></app-cards>
-    <h2>Gráfico dos intervalos</h2>
+    <h2>Distribuição dos intervalos no gráfico</h2>
     <div class="grafico">
       <app-grafico-pizza
         [valoresGrafico]="valoresDoGraficoPizza"
         [labelsGrafico]="labelsDoGraficoPizza"
       ></app-grafico-pizza>
+      <div class="info">
+        <h2>Média das idades:</h2>
+        <p>{{ media.toFixed() }}</p>
+        <h2>Total da amostra:</h2>
+        <p>{{ totalDeItens }} pessoas</p>
+        <h2>Amplitude</h2>
+        <p>{{ amplitude }}</p>
+        <h2>Idade Mínima</h2>
+        <p>{{ idadeMinima }}</p>
+        <h2>Idade Máxima</h2>
+        <p>{{ idadeMaxima }}</p>
+      </div>
+    </div>
+    <div>
+    <h2>Distribuição dos intrevistados pelas Universidades</h2>
 
-      <h2>Média das idades:</h2>
-      <p>{{ media.toFixed() }}</p>
-      <h2>Total da amostra:</h2>
-      <p>{{totalDeItens}} pessoas</p>
-
+      <app-grafico-polar [data]="universidades"></app-grafico-polar>
     </div>
   </div>
 </app-layout>
