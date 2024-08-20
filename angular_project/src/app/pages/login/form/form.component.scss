@@ -1,31 +1,65 @@
 @import 'variables';
 
 .formulario {
-  background-color: $cor-terciaria;
+  background-color: rgba(255, 255, 255, 0.438);
+
   padding: 24px;
   border-radius: 24px;
   filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.527));
-  height: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & .inputs {
+    display: flex;
+    flex-direction: column;
+
+    & .logo{
+      font-size: 112px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: -70px;
+      left: 45%;
+      transform: translateX(-50%);
+      background-color: $cor-secundaria;
+      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+    }
+
+    & div {
+      background-color: $cor-secundaria;
+      
+    }
+
+  }
 
   & div {
     margin-bottom: 24px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 
-    & label {
-      color: $cor-texto-destaque;
-      font-size: 12px;
-      font-family: $fonte-primaria;
-      margin-bottom: 8px;
 
+
+    & span {
+      color: $cor-texto;
+      font-size: 24px;
+      margin: 0 12px;
+      display: flex;
+      align-items: center;
     }
 
     & input {
       background-color: $cor-terciaria;
       border: 1px solid $cor-texto-secundario;
-      border-radius: 8px;
       padding: 8px;
+
     }
   }
 
@@ -40,5 +74,9 @@
     cursor: pointer;
 
     width: 100%;
+  }
+
+  & button:hover {
+    background-color: $cor-azul;
   }
 }

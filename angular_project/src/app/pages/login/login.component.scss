@@ -1,14 +1,10 @@
+@import 'variables';
 .principal {
   height: 100vh;
   overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-
-  }
+//Degrade
+  background: linear-gradient(180deg, $cor-primaria 0%, $cor-primaria-shaded 100%);
+  // background-color: orange;
 
   app-form {
     z-index: 1;

@@ -1,18 +1,34 @@
 <form (ngSubmit)="autenticar()" #userForm="ngForm" class="formulario">
-    <div class="nome">
-      <label for="name">Login:</label>
-      <input type="text" id="name" required [(ngModel)]="user.nome" name="name">
-    </div>
-  
+  <div class="inputs">
+    <span class="material-symbols-outlined logo"> account_circle </span>
     <div>
-      <label for="senha">Password:</label>
-      <input type="password" id="senhas" required [(ngModel)]="user.senha" name="senha">
+      <span class="material-symbols-outlined"> person </span>
+      <input
+        type="text"
+        id="name"
+        required
+        [(ngModel)]="user.nome"
+        name="name"
+        placeholder="Member login"
+      />
     </div>
-  
-    <button type="submit" [disabled]="!userForm.form.valid">Entrar</button>
-  </form>
-  
-  <p *ngIf="submitted">
-    Form Submitted! Name: {{ user.nome }}, Senha: {{ user.senha }}
-  </p>
-  
+
+    <div>
+      <span class="material-symbols-outlined"> lock </span>
+      <input
+        type="password"
+        id="senhas"
+        required
+        [(ngModel)]="user.senha"
+        name="senha"
+        placeholder="Password"
+      />
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!userForm.form.valid">Entrar</button>
+</form>
+
+<p *ngIf="submitted">
+  Form Submitted! Name: {{ user.nome }}, Senha: {{ user.senha }}
+</p>
