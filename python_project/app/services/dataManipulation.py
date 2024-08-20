@@ -2,11 +2,15 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-#Função de carrega os dados do arquivo CSV
+# Função de carrega os dados do arquivo CSV
+
+
 def carregar_dados():
     return pd.read_csv('data/data.csv')
 
-#Função para carregar a média de um intervalo
+# Função para carregar a média de um intervalo
+
+
 def calcular_media_intervalo(intervalo):
     if '-' in intervalo:
         minimo, maximo = map(int, intervalo.split('-'))
@@ -16,21 +20,23 @@ def calcular_media_intervalo(intervalo):
         return None
 
 
-#Função para exibir os resultados
+# Função para exibir os resultados
 def exibir_resultados(resultado):
     print(resultado)
 
-#Função para contar os intervalos, filtrando apenas os intervalos válidos
+# Função para contar os intervalos, filtrando apenas os intervalos válidos
+
+
 def contar_intervalos(dados):
     # Filtra apenas os intervalos válidos (aqueles que contêm '-')
     intervalos_validos = dados['1. Age'].loc[dados['1. Age'].str.contains('-')]
-    
+
     # Conta o número de itens em cada intervalo
     contagem_intervalos = intervalos_validos.value_counts()
-    
+
     # Lista para armazenar os intervalos formatados
     intervalos_formatados = []
-    
+
     for intervalo, total_de_itens in contagem_intervalos.items():
         # Extrai os limites inferior e superior
         if intervalo != 'Below 18' and intervalo != 'Above 30':  # Ignorar "Below 18" e "Above 30"
@@ -41,7 +47,7 @@ def contar_intervalos(dados):
                 limite_inferior, limite_superior = 0, 17
             elif intervalo == 'Above 30':
                 limite_inferior, limite_superior = 31, 100
-        
+
         # Adiciona o intervalo formatado à lista
         intervalos_formatados.append({
             'intervalo': intervalo,
@@ -49,11 +55,11 @@ def contar_intervalos(dados):
             'limiteSuperior': limite_superior,
             'totalDeItens': total_de_itens
         })
-    
+
     return intervalos_formatados
 
 
-#Função para calcular a média geral das idades
+# Função para calcular a média geral das idades
 def calcular_media_idade(dados):
     # Aplica a função calcular_media_intervalo para cada valor na coluna '1. Age'
     dados['Media Idade'] = dados['1. Age'].apply(calcular_media_intervalo)
@@ -63,12 +69,30 @@ def calcular_media_idade(dados):
     media_geral = dados_filtrados['Media Idade'].mean()
     return media_geral.round(2)
 
-#Função para calcular a % do genero dos intrevistados
-def calcular_percentual_genero(dados):
-    # Conta o número de itens em cada categoria
-    contagem_genero = dados['Gender'].value_counts()
-    # Calcula o total de itens
-    total_de_itens = contagem_genero.sum()
-    # Calcula a porcentagem de cada categoria
-    percentual_genero = contagem_genero / total_de_itens * 100
-    return percentual_genero
+# Função para calcular a % do genero dos intrevistados
+# def calcular_percentual_genero(dados):
+
+
+def contar_universidades(dados):
+    # Conta o número de itens em cada universidade
+    contagem_universidades = dados['3. University'].value_counts()
+    # Lista para armazenar as universidades formatadas
+    universidades_formatadas = []
+    for universidade, total_de_itens in contagem_universidades.items():
+        # Adiciona a universidade formatada à lista
+        universidades_formatadas.append({
+            'universidade': universidade,
+            'totalDeItens': total_de_itens
+        })
+    return universidades_formatadas
+
+
+def obter_amplitude_idade(dados):
+    # Verifica as strings de intervalo de idade, transforma em número e retorna o valor mínimo e máximo
+    intervalos = dados['1. Age'].str.split('-', expand=True)
+    intervalos = intervalos.apply(pd.to_numeric)
+
+    minimo = int(intervalos.min().min())
+    maximo = int(intervalos.max().max())
+    amplitude = {'minimo': minimo, 'maximo': maximo, 'amplitude': maximo - minimo}
+    return amplitude

@@ -66,3 +66,17 @@ def login():
         return jsonify({'mensagem': 'Erro interno no servidor'}), 500
 
 # @main.rout('/api/genero', methods=['GET'])
+
+@main.route('/api/intervalos/universidade', methods=['GET'])
+def get_universidades():
+    dados = dataManipulation.carregar_dados()
+    universidades = dataManipulation.contar_universidades(dados)
+    return jsonify(universidades)
+
+@main.route('/api/intervalos/idade/amplitude', methods=['GET'])
+def obter_amplitude_idade():
+    dados = dataManipulation.carregar_dados()
+    amplitude = dataManipulation.obter_amplitude_idade(dados)
+    print(amplitude)
+    
+    return jsonify(amplitude)
