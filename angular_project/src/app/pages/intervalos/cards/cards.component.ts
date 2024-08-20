@@ -1,14 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Intervalo } from '../../../interfaces/intervalo';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-cards',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss',
+  templateUrl: './cards.component.html',
+  styleUrl: './cards.component.scss'
 })
-export class CardComponent {
+export class CardsComponent {
   @Input() data: Intervalo[] = [];
+
 }

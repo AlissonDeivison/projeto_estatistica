@@ -2,9 +2,7 @@
 
 
 .card-container {
-  padding: 24px;
-  display: flex;
-
+  padding: 12px;
   background-color: $cor-secundaria;
   color: $cor-texto;
 
@@ -12,15 +10,12 @@
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  margin: 0 48px;
 
-  width: 300px;
+
+  width: 250px;
 
   & .card {
-    margin: 24px;
-    width: 100%;
     text-align: center;
-
     & p {
       font-size: 16px;
     }
