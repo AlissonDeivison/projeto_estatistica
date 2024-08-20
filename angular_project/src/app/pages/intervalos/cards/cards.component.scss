@@ -6,14 +6,19 @@
   background-color: $cor-secundaria;
   color: $cor-texto;
 
-  border-radius: 4px;
+  border-radius: 16px;
 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.719);
 
 
 
-  width: 250px;
 
+  width: clamp(250px, 28%, 300px);
+
+  & h1{
+    font-size: 24px;
+    font-weight: 700;
+  }
   & .card {
     text-align: center;
     & p {
@@ -21,4 +26,10 @@
     }
   }
 
+}
+.card-container:hover {
+  background-color: $cor-primaria-hover;
+  color: $cor-texto;
+  cursor: pointer;
+  transition: background-color 0.5s;
 }
