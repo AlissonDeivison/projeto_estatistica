@@ -1,4 +1,4 @@
-import { Component, Input, input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
