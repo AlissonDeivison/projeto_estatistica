@@ -1,12 +1,13 @@
 @import 'variables';
 
 .formulario {
-  background-color: rgba(255, 255, 255, 0.438);
+  background-color: rgba(0, 0, 0, 0.438);
 
-  padding: 24px;
+  padding: 24px 48px;
   border-radius: 24px;
   filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.527));
   height: 300px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,28 +15,28 @@
   & .inputs {
     display: flex;
     flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
 
     & .logo{
-      font-size: 112px;
+      font-size: 80px;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      top: -70px;
+      top: -10px;
       left: 45%;
       transform: translateX(-50%);
-      background-color: $cor-secundaria;
       border-radius: 100%;
-      width: 80px;
-      height: 80px;
+      color: $cor-texto;
+      
     }
 
     & div {
       background-color: $cor-secundaria;
-      
+      border-radius: 8px;
     }
-
   }
 
   & div {
@@ -59,24 +60,30 @@
       background-color: $cor-terciaria;
       border: 1px solid $cor-texto-secundario;
       padding: 8px;
+      border-radius: 0 8px 8px 0px;
+      width: 90%;
 
     }
   }
 
   & button {
-    background-color: $cor-primaria;
+    background-color: $cor-primaria-shaded;
     color: $cor-texto;
     border: none;
     border-radius: 8px;
     padding: 8px;
     font-family: $fonte-primaria;
-    font-size: 12px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 700;
+    width: 90%;
+    margin: 0 auto;
 
-    width: 100%;
   }
 
   & button:hover {
-    background-color: $cor-azul;
+    background-color: $cor-primaria;
+    color: black;
   }
 }
