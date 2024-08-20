@@ -1,5 +1,19 @@
 <app-layout>
-    <div class="container" [class.open]="!isOpen">
-        
+  <div class="content" [class.open]="!isOpen">
+    <h2>Intervalos observados</h2>
+    <app-cards [data]="data"></app-cards>
+    <h2>Gráfico dos intervalos</h2>
+    <div class="grafico">
+      <app-grafico-pizza
+        [valoresGrafico]="valoresDoGraficoPizza"
+        [labelsGrafico]="labelsDoGraficoPizza"
+      ></app-grafico-pizza>
+
+      <h2>Média das idades:</h2>
+      <p>{{ media.toFixed() }}</p>
+      <h2>Total da amostra:</h2>
+      <p>{{totalDeItens}} pessoas</p>
+
     </div>
+  </div>
 </app-layout>
