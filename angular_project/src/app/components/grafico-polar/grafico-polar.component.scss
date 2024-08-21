@@ -1,26 +1,13 @@
+div {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
 canvas {
-    display: block;
-    box-sizing: border-box;
-    min-height: 500px;
-    max-height: 500px;
-    
-  }
-  //Resposivididade
-    @media screen and (max-width: 768px) {
-        canvas {
-        min-height: 500px;
-        max-height: 500px;
-        }
-    }
-    @media screen and (max-width: 430px) {
-        canvas {
-        min-height: 300px;
-        max-height: 300px;
-        }
-    }
-    @media screen and (max-width: 320px) {
-        canvas {
-        min-height: 200px;
-        max-height: 200px;
-        }
-    }
+  display: block;
+  box-sizing: border-box;
+  min-height: max-content;
+  min-width: 200px;
+
+}

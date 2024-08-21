@@ -1,5 +1,11 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { ChartData, ChartType } from 'chart.js';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { ChartData, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { Universidade } from '../../interfaces/universidade';
 
@@ -8,20 +14,45 @@ import { Universidade } from '../../interfaces/universidade';
   standalone: true,
   imports: [BaseChartDirective],
   templateUrl: './grafico-polar.component.html',
-  styleUrls: ['./grafico-polar.component.scss'], // Corrigido para styleUrls
+  styleUrls: ['./grafico-polar.component.scss'],
 })
 export class GraficoPolarComponent implements OnChanges {
   @Input() data: Universidade[] = [];
 
   public polarAreaChartLabels: string[] = [];
   public valoresDoGrafico: number[] = [];
-  public polarAreaChartData: ChartData<'bar'> = {
+  public polarAreaChartData: ChartData<'line'> = {
     labels: this.polarAreaChartLabels,
     datasets: [
       {
         data: this.valoresDoGrafico,
       },
     ],
+  };
+
+  public polarAreaChartOptions: ChartOptions<'line'> = {
+    // Adiciona as opções do gráfico
+    plugins: {
+      legend: {
+        display: false, // Desativa a exibição da legenda
+      },
+      title: {
+        display: false, // Ativa a exibição do título
+        text: 'Total de itens por universidade', // Define o título
+        color: 'black', // Define a cor do título
+        font: {
+          size: 16, // Define o tamanho da fonte
+        },
+      },
+    },
+    scales: {
+      x: {
+        display: false, // Desativa as labels no eixo x
+      },
+      y: {
+        display: true,
+      },
+    },
   };
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -31,7 +62,6 @@ export class GraficoPolarComponent implements OnChanges {
   }
 
   gerarDadosDoGrafico() {
-    // Limpa os arrays antes de popular novamente
     this.polarAreaChartLabels = [];
     this.valoresDoGrafico = [];
 
@@ -40,17 +70,16 @@ export class GraficoPolarComponent implements OnChanges {
       this.valoresDoGrafico.push(this.data[i].totalDeItens);
     }
 
-    // Atualiza o chart data com os novos valores
     this.polarAreaChartData = {
       labels: this.polarAreaChartLabels,
       datasets: [
         {
-          data: this.valoresDoGrafico, label: 'Total de entrevistados',
+          data: this.valoresDoGrafico,
         },
       ],
     };
   }
 
-  public polarAreaLegend = true;
-  public polarAreaChartType: ChartType = 'bar';
+  public polarAreaLegend = false; // Mantém a legenda desativada
+  public polarAreaChartType: ChartType = 'line'; // Mantém o tipo como 'line'
 }
