@@ -85,7 +85,7 @@ def obter_amplitude_idade(dados):
     intervalos = intervalos.apply(pd.to_numeric)
 
     minimo = int(intervalos.min().min())
-    maximo = int(intervalos.max().max())
+    maximo = int(intervalos.max().max()+1)
     amplitude = {'minimo': minimo, 'maximo': maximo,
                  'amplitude': maximo - minimo}
     return amplitude
@@ -122,3 +122,14 @@ def separarPorGenero(dados):
                 else:
                     outros += 1
     return {'homens': homens, 'mulheres': mulheres, 'outros': outros}
+
+def popular_tabela(dados):
+    # Filtra os dados por genero
+    classes = contar_intervalos(dados)
+    return {'classes': classes}
+    
+    
+    
+    
+    
+        

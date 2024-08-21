@@ -87,3 +87,9 @@ def separarPorGenero():
     dados = dataManipulation.carregar_dados()
     generos = dataManipulation.separarPorGenero(dados)
     return jsonify(generos)
+
+@main.route('/api/classes', methods=['GET'])
+def popular_tabela():
+    dados = dataManipulation.carregar_dados()
+    tabela = dataManipulation.popular_tabela(dados)
+    return jsonify(tabela)
