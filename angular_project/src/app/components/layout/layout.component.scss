@@ -5,7 +5,6 @@ app-header{
 .container {
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
 
   & app-sidebar {
     background-color: #f4f4f4;
@@ -15,4 +14,10 @@ app-header{
       height: auto;
     }
   }
+
+  & .main-content{
+    width: -webkit-fill-available;
+  }
+
+
 }
