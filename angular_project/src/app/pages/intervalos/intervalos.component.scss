@@ -1,11 +1,9 @@
 .content {
-  width: 100%;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   transition: padding-left 0.3s;
-  padding: 28px;
-  margin: 0 24px 0 24px;
+  padding: 24px;
 
   & .grafico {
     display: flex;
@@ -28,9 +26,35 @@
     }
   }
 
+  & .grafico_barras{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 24px 0;
+    
+    & app-grafico-polar{  
+      justify-content: center;
+      width: 90%;
+    }
+    & h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      
+    }
+
+    & p{
+      margin: 0;
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+
   & app-cards {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
   &.open {
@@ -43,4 +67,5 @@
     flex-basis: calc(100% - 280px);
     max-width: 100%;
   }
+
 }

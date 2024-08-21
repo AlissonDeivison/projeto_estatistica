@@ -1,5 +1,5 @@
 <app-layout>
-  <div class="content" [class.open]="!isOpen">
+  <div class="content">
     <h2>Intervalos observados</h2>
     <app-cards [data]="data"></app-cards>
     <h2>Distribuição dos intervalos no gráfico</h2>
@@ -21,10 +21,32 @@
         <p>{{ idadeMaxima }}</p>
       </div>
     </div>
-    <div>
     <h2>Distribuição dos intrevistados pelas Universidades</h2>
-
+    <div class="grafico_barras">
       <app-grafico-polar [data]="universidades"></app-grafico-polar>
+      <div class="polar_info">
+        <h2>Total de Universidades:</h2>
+        <p>{{ numeroDeUniversidades }}</p>
+        <h2>Total de entrevistados:</h2>
+        <p>{{ totalDeItens }} pessoas</p>
+        <h2>Média de intrevistados por Universidades</h2>
+        <p>{{ mediaDeIntervistadosPorUniversidade}}</p>
+      </div>
+    </div>
+    <h2>Disribuição de gênero dos intrevistados</h2>
+    <div class="grafico">
+      <app-grafico-pizza
+        [valoresGrafico]="valoresGraficoDeGenero"
+        [labelsGrafico]="labelsGraficoDeGenero"
+      ></app-grafico-pizza>
+      <div class="info">
+        <h2>Sexo Masculino</h2>
+        <p>{{ genero.masculino }}</p>
+        <h2>Sexo Feminino:</h2>
+        <p>{{ genero.feminino }} pessoas</p>
+        <h2>Outros: </h2>
+        <p>{{ genero.outros }} pessoas</p>
+      </div>
     </div>
   </div>
 </app-layout>
