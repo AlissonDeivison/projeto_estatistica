@@ -7,7 +7,7 @@
   border-radius: 24px;
   filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.527));
   height: 300px;
-  width: 300px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,7 +15,6 @@
   & .inputs {
     display: flex;
     flex-direction: column;
-    width: 90%;
     margin: 0 auto;
 
     & .logo{
@@ -76,7 +75,6 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-weight: 700;
     width: 90%;
     margin: 0 auto;
 
