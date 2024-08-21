@@ -1,15 +1,11 @@
 @import 'variables';
 
 .content {
-  width: 100%;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   transition: padding-left 0.3s;
-  margin-top: 24px;
   padding: 24px;
-  text-align: justify;
-  margin-left: 24px;
 
   & .kaggle_info {
     & figure {
