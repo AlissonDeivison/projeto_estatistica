@@ -14,9 +14,6 @@ def calcular_media_intervalo(intervalo):
     if '-' in intervalo:
         minimo, maximo = map(int, intervalo.split('-'))
         return (minimo + maximo+1) / 2
-    else:
-        # Retorna None para intervalos que não devem ser considerados
-        return None
 
 
 # Função para contar os intervalos, filtrando apenas os intervalos válidos
@@ -60,7 +57,7 @@ def calcular_media_idade(dados):
     dados_filtrados = dados.dropna(subset=['Media Idade'])
     # Calcula a média geral das idades, ignorando valores nulos
     media_geral = dados_filtrados['Media Idade'].mean()
-    return media_geral.round(2)
+    return int(media_geral)
 
 # Função para calcular a % do genero dos intrevistados
 # def calcular_percentual_genero(dados):
