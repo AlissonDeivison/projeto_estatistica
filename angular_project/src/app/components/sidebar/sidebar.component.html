@@ -7,23 +7,28 @@
     </figure>
     <div class="opcoes">
       <ol>
-        <li 
-          (click)="redirectTo('/home')" 
-          [ngClass]="{ 'active': isActive('/home') }">
+        <li
+          (click)="redirectTo('/home')"
+          [ngClass]="{ active: isActive('/home') }"
+        >
           <p>Sobre os dados</p>
         </li>
-        <li 
-          (click)="redirectTo('/resumo')" 
-          [ngClass]="{ 'active': isActive('/resumo') }">
+        <li
+          (click)="redirectTo('/resumo')"
+          [ngClass]="{ active: isActive('/resumo') }"
+        >
           <p>Resumo dos dados</p>
         </li>
-        <li 
-          (click)="redirectTo('/algoritmos')" 
-          [ngClass]="{ 'active': isActive('/algoritmos') }">
+        <li
+          (click)="redirectTo('/algoritmos')"
+          [ngClass]="{ active: isActive('/algoritmos') }"
+        >
           <p>Algoritmos de manipulação</p>
         </li>
-        <li 
-          [ngClass]="{ 'active': isActive('/detalhamento') }">
+        <li
+          (click)="redirectTo('/detalhes')"
+          [ngClass]="{ active: isActive('/detalhes') }"
+        >
           <p>Detalhamento dos cálculos</p>
         </li>
       </ol>
