@@ -2,7 +2,8 @@
   <div class="content">
     <h1>Cálculo de Média</h1>
     <p>
-      Algoritmos utilizados para calcular a média de alguns intervalos da amostragem
+      Algoritmos utilizados para calcular a média de alguns intervalos da
+      amostragem
     </p>
     <div class="codigos">
       <mat-accordion>
@@ -12,19 +13,20 @@
             <mat-panel-title>Cálculo de média das idades</mat-panel-title>
           </mat-expansion-panel-header>
           <pre>
-            <code>
-              <span class="keyword">def</span> calcular_media_idade(dados):
-              <span class="comment"># Aplica a função calcular_media_intervalo para cada valor na coluna '1. Age'</span>
-              dados[<span class="string">'Media Idade'</span>] = dados[<span class="string">'1. Age'</span>].apply(calcular_media_intervalo)
-              <span class="comment"># Filtra apenas os valores não nulos</span>
-              dados_filtrados = dados.dropna(subset=[<span class="string">'Media Idade'</span>])
-              <span class="comment"># Calcula a média geral das idades, ignorando valores nulos</span>
-              media_geral = dados_filtrados[<span class="string">'Media Idade'</span>].mean()
-              <span class="keyword">return</span> int(<span class="number">media</span>)
-            </code>
-          </pre>
+              <code>
+                <span class="keyword">def</span> calcular_media_idade(dados):
+                <span class="comment"># Aplica a função calcular_media_intervalo para cada valor na coluna
+                '1. Age'</span>
+                dados[<span class="string">'Media Idade'</span>] = dados[<span class="string">'1. Age'</span>].apply(calcular_media_intervalo)
+                <span class="comment"># Filtra apenas os valores não nulos</span>
+                dados_filtrados = dados.dropna(subset=[<span class="string">'Media Idade'</span>])
+                <span class="comment"># Calcula a média geral das idades, ignorando valores nulos</span>
+                media_geral = dados_filtrados[<span class="string">'Media Idade'</span>].mean()
+                <span class="keyword">return</span> int(<span class="number">media</span>)
+              </code>
+            </pre>
         </mat-expansion-panel>
-        
+
         <!-- Cálculo da amplitude das idades -->
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
@@ -33,7 +35,8 @@
           <pre>
             <code>
               <span class="keyword">def</span> obter_amplitude_idade(dados):
-                <span class="comment"># Verifica as strings de intervalo de idade, transforma em número e retorna o valor mínimo e máximo</span>
+                <span class="comment"># Verifica as strings de intervalo de idade, transforma em número 
+                  e retorna o valor mínimo e máximo</span>
                 intervalos = dados[<span class="string">'1. Age'</span>].str.split(<span class="string">'-'</span>, expand=<span class="boolean">true</span>)
                 intervalos = intervalos.apply(pd.<span class="keyword">to_numeric</span>)
     
@@ -48,11 +51,13 @@
             </code>
           </pre>
         </mat-expansion-panel>
-        
+
         <!-- Cálculo de ponto médio dos intervalos -->
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
-            <mat-panel-title>Cálculo de ponto médio dos intervalos</mat-panel-title>
+            <mat-panel-title
+              >Cálculo de ponto médio dos intervalos de idade</mat-panel-title
+            >
           </mat-expansion-panel-header>
           <pre>
             <code>
@@ -63,11 +68,14 @@
             </code>
           </pre>
         </mat-expansion-panel>
-        
+
         <!-- Número de estudantes entrevistados por Universidade -->
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
-            <mat-panel-title>Número de estudantes entrevistados por Universidade</mat-panel-title>
+            <mat-panel-title
+              >Número de estudantes entrevistados por
+              Universidade</mat-panel-title
+            >
           </mat-expansion-panel-header>
           <pre>
             <code>
@@ -86,7 +94,7 @@
             </code>
           </pre>
         </mat-expansion-panel>
-        
+
         <!-- Número de Universidades -->
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
@@ -99,6 +107,63 @@
                   <span class="string">'numero_de_universidades'</span>: dados[<span class="string">'3. University'</span>].nunique()
                 <span class="operator">&#125;</span>
                 <span class="keyword">return</span> numero
+            </code>
+          </pre>
+        </mat-expansion-panel>
+
+        <!-- Média aritmética dos estudantes nas universidades -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              >Média de estudantes por Universidade</mat-panel-title
+            >
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> media_aritmetica_universidade(dados):
+                valores = intrevistados_por_universidade(dados)
+                soma = <span class="number">0</span>
+                <span class="keyword">for</span> valor <span class="keyword">in</span> valores:
+                    soma += valor[<span class="string">'totalDeItens'</span>]
+      
+                numeroDeUniversidades = obter_numero_de_universidades(
+                    dados)[<span class="string">'numero_de_universidades'</span>]
+      
+                media = soma / numeroDeUniversidades
+                <span class="comment"># Retornar apenas o valor inteiro</span>
+                <span class="keyword">return</span> <span class="operator">&#123;</span><span class="string">'media'</span>: <span class="keyword">int</span>(media)<span class="operator">&#125;</span>
+            </code>
+          </pre>
+        </mat-expansion-panel>
+
+        <!-- Separar entrevistados por gênero -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Obter gênero dos entrevistados</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> separarPorGenero(dados):
+                <span class="comment"># Filtra os dados por genero</span>
+                homens = <span class="number">0</span>
+                mulheres = <span class="number">0</span>
+                outros = <span class="number">0</span>
+                <span class="keyword">for</span> i <span class="keyword">in</span> dados:
+                    <span class="keyword">if</span> i == <span class="string">'2. Gender'</span>:
+                        <span class="comment"># Filtra os dados por genero</span>
+                        genero = dados[i]
+                        <span class="keyword">for</span> i <span class="keyword">in</span> genero:
+                            <span class="keyword">if</span> i == <span class="string">'Male'</span>:
+                                homens += <span class="number">1</span>
+                            <span class="keyword">elif</span> i == <span class="string">'Female'</span>:
+                                mulheres += <span class="number">1</span>
+                            <span class="keyword">else</span>:
+                                outros += <span class="number">1</span>
+                <span class="keyword">return</span> <span class="operator">&#123;</span>
+                    <span class="string">'homens'</span>: homens,
+                    <span class="string">'mulheres'</span>: mulheres,
+                    <span class="string">'outros'</span>: outros
+                <span class="operator">&#125;</span>
             </code>
           </pre>
         </mat-expansion-panel>
