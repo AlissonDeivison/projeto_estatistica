@@ -8,6 +8,7 @@ import { SidebarService } from '../../services/sidebar.service';
 import { DataService } from '../../services/data.service';
 import { ServicesModule } from '../../services/services.module';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,8 @@ import { Router } from '@angular/router';
     MatSidenavModule,
     MatCheckboxModule,
     FormsModule,
-    ServicesModule
+    ServicesModule,
+    CommonModule
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -35,6 +37,9 @@ export class SidebarComponent implements OnInit {
   redirectTo(route: string) {
     this.router.navigate([route]);
   }
-  
+  //Verifica qual a página para aplica o estilo de ativo
+  isActive(route: string) {
+    return this.router.url === route;
+  }
 
 }

@@ -72,28 +72,38 @@ aside {
     & ol {
       width: 240px;
       padding: 0;
-      
-      
+
+
       & li {
         list-style: none;
         padding: 12px;
         margin: 8px;
-        
+
         & a {
           text-decoration: none;
           color: $cor-texto-destaque;
           font-size: 14px;
           font-weight: 500;
           transition: color 0.3s;
-          
+
         }
       }
-      
+
       & li:hover {
         background-color: $cor-secundaria;
         cursor: pointer;
-       
-        
+
+
+        & p {
+          color: $cor-texto;
+        }
+      }
+
+      & li.active {
+        background-color: $cor-secundaria;
+        border-radius: 8px;
+        color: $cor-texto;
+
         & p {
           color: $cor-texto;
         }
