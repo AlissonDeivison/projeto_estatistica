@@ -66,7 +66,7 @@
   }
 
   & button {
-    background-color: $cor-primaria-shaded;
+    background-color: $cor-primaria;
     color: $cor-texto;
     border: none;
     border-radius: 8px;
@@ -81,7 +81,7 @@
   }
 
   & button:hover {
-    background-color: $cor-primaria;
+    background-color: $cor-primaria-hover;
     color: black;
   }
 }
