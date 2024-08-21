@@ -1,0 +1,29 @@
+<table class="container">
+  <thead>
+    <tr>
+      <th>i</th>
+      <th>Intervalo da Classe</th>
+      <th>F<span>i</span></th>
+      <th>X<span>i</span></th>
+      <th>F<span>i</span> <span>.</span> X<span>i</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of dataSource">
+      <td>{{ row.numero_da_classe }}</td>
+      <td>{{ row.limiteInferior }} <span><img src="/assets/elements/barra_intervalo.svg" alt="Barra de intervalo"></span> {{row.limiteSuperior+1}}</td>
+      <td>{{ row.frequencia }}</td>
+      <td>{{ row.ponto_medio }}</td>
+      <td>{{ row.frequencia_vezes_ponto_medio }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Número de classes: 3</td>
+      <td>Amplitude total: {{amplitude}}</td>
+      <td>{{ totalFrequencia }}</td>
+      <td></td>
+      <td>{{ totalFrequenciaVezesPontoMedio }}</td>
+    </tr>
+</table>
+<p>Para calcular a média aritmética de uma série de valores agrupados em intervalos de classe, multiplicamos o ponto médio de cada intervalo pela respectiva frequência, somamos todos esses produtos e, em seguida, dividimos o resultado pelo número total de observações. Portanto, a média desta amostragem é: {{media}}</p>

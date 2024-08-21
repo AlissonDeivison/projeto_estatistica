@@ -1,0 +1,61 @@
+@import 'variables';
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 24px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-height: 240px;
+
+  & thead tr th {
+    border-bottom: 2px solid #dee2e6;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: 500;
+    font-size: 16px;
+    font-style: italic;
+    width: 50px;
+
+    & span {
+      font-size: 12px;
+    }
+  }
+
+  & tbody tr td {
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+
+    & span img {
+
+      width: 30px;
+      height: 10px;
+
+    }
+  }
+
+  & tbody tr td:hover {
+    background-color: #f1f1f1;
+    color: $cor-primaria;
+    font-weight: 700;
+    overflow-x: hidden;
+
+
+  }
+
+  & tfoot tr td {
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+p {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: justify;
+}
