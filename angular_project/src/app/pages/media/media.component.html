@@ -1,0 +1,108 @@
+<app-layout>
+  <div class="content">
+    <h1>Cálculo de Média</h1>
+    <p>
+      Algoritmos utilizados para calcular a média de alguns intervalos da amostragem
+    </p>
+    <div class="codigos">
+      <mat-accordion>
+        <!-- Cálculo de média das idades -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Cálculo de média das idades</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> calcular_media_idade(dados):
+              <span class="comment"># Aplica a função calcular_media_intervalo para cada valor na coluna '1. Age'</span>
+              dados[<span class="string">'Media Idade'</span>] = dados[<span class="string">'1. Age'</span>].apply(calcular_media_intervalo)
+              <span class="comment"># Filtra apenas os valores não nulos</span>
+              dados_filtrados = dados.dropna(subset=[<span class="string">'Media Idade'</span>])
+              <span class="comment"># Calcula a média geral das idades, ignorando valores nulos</span>
+              media_geral = dados_filtrados[<span class="string">'Media Idade'</span>].mean()
+              <span class="keyword">return</span> int(<span class="number">media</span>)
+            </code>
+          </pre>
+        </mat-expansion-panel>
+        
+        <!-- Cálculo da amplitude das idades -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Cálculo da amplitude das idades</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> obter_amplitude_idade(dados):
+                <span class="comment"># Verifica as strings de intervalo de idade, transforma em número e retorna o valor mínimo e máximo</span>
+                intervalos = dados[<span class="string">'1. Age'</span>].str.split(<span class="string">'-'</span>, expand=<span class="boolean">true</span>)
+                intervalos = intervalos.apply(pd.<span class="keyword">to_numeric</span>)
+    
+                minimo = <span class="keyword">int</span>(intervalos.min().min())
+                maximo = <span class="keyword">int</span>(intervalos.max().max())
+                amplitude = <span class="operator">&#123;</span>
+                  <span class="string">'minimo'</span>: minimo,
+                  <span class="string">'maximo'</span>: maximo,
+                  <span class="string">'amplitude'</span>: maximo - minimo
+                <span class="operator">&#125;</span>
+                <span class="keyword">return</span> amplitude
+            </code>
+          </pre>
+        </mat-expansion-panel>
+        
+        <!-- Cálculo de ponto médio dos intervalos -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Cálculo de ponto médio dos intervalos</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> calcular_media_intervalo(intervalo):
+                <span class="keyword">if</span> <span class="string">'-'</span> <span class="keyword">in</span> intervalo:
+                  minimo, maximo = map(<span class="keyword">int</span>, intervalo.split(<span class="string">'-'</span>))
+                  <span class="keyword">return</span> (minimo + maximo<span class="operator">+</span><span class="number">1</span>) / <span class="number">2</span>
+            </code>
+          </pre>
+        </mat-expansion-panel>
+        
+        <!-- Número de estudantes entrevistados por Universidade -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Número de estudantes entrevistados por Universidade</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> intrevistados_por_universidade(dados):
+                <span class="comment"># Conta o número de itens em cada universidade</span>
+                contagem_universidades = dados[<span class="string">'3. University'</span>].value_counts()
+                <span class="comment"># Lista para armazenar as universidades formatadas</span>
+                universidades_formatadas = []
+                <span class="keyword">for</span> universidade, total_de_itens <span class="keyword">in</span> contagem_universidades.items():
+                  <span class="comment"># Adiciona a universidade formatada à lista</span>
+                  universidades_formatadas.append(<span class="operator">&#123;</span>
+                    <span class="string">'universidade'</span>: universidade,
+                    <span class="string">'totalDeItens'</span>: total_de_itens
+                  <span class="operator">&#125;</span>)
+                <span class="keyword">return</span> universidades_formatadas
+            </code>
+          </pre>
+        </mat-expansion-panel>
+        
+        <!-- Número de Universidades -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Número de Universidades</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> obter_numero_de_universidades(dados):
+                <span class="keyword">numero</span> = <span class="operator">&#123;</span>
+                  <span class="string">'numero_de_universidades'</span>: dados[<span class="string">'3. University'</span>].nunique()
+                <span class="operator">&#125;</span>
+                <span class="keyword">return</span> numero
+            </code>
+          </pre>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</app-layout>
