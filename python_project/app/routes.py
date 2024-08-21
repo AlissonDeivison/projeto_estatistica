@@ -65,13 +65,14 @@ def login():
         print(f'Erro no login: {e}')
         return jsonify({'mensagem': 'Erro interno no servidor'}), 500
 
-# @main.rout('/api/genero', methods=['GET'])
 
 @main.route('/api/intervalos/universidade', methods=['GET'])
 def get_universidades():
     dados = dataManipulation.carregar_dados()
-    universidades = dataManipulation.contar_universidades(dados)
-    return jsonify(universidades)
+    universidades = dataManipulation.intrevistados_por_universidade(dados)
+    numero_de_universidades = dataManipulation.obter_numero_de_universidades(dados)
+    media = dataManipulation.media_aritmetica_universidade(dados)
+    return jsonify(universidades, numero_de_universidades, media)
 
 @main.route('/api/intervalos/idade/amplitude', methods=['GET'])
 def obter_amplitude_idade():
@@ -80,3 +81,9 @@ def obter_amplitude_idade():
     print(amplitude)
     
     return jsonify(amplitude)
+
+@main.route('/api/intervalos/genero', methods=['GET'])
+def separarPorGenero():
+    dados = dataManipulation.carregar_dados()
+    generos = dataManipulation.separarPorGenero(dados)
+    return jsonify(generos)

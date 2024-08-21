@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 
 def carregar_dados():
     return pd.read_csv('data/data.csv')
-
 # Função para carregar a média de um intervalo
 
 
@@ -20,13 +19,7 @@ def calcular_media_intervalo(intervalo):
         return None
 
 
-# Função para exibir os resultados
-def exibir_resultados(resultado):
-    print(resultado)
-
 # Função para contar os intervalos, filtrando apenas os intervalos válidos
-
-
 def contar_intervalos(dados):
     # Filtra apenas os intervalos válidos (aqueles que contêm '-')
     intervalos_validos = dados['1. Age'].loc[dados['1. Age'].str.contains('-')]
@@ -73,7 +66,7 @@ def calcular_media_idade(dados):
 # def calcular_percentual_genero(dados):
 
 
-def contar_universidades(dados):
+def intrevistados_por_universidade(dados):
     # Conta o número de itens em cada universidade
     contagem_universidades = dados['3. University'].value_counts()
     # Lista para armazenar as universidades formatadas
@@ -87,6 +80,11 @@ def contar_universidades(dados):
     return universidades_formatadas
 
 
+def obter_numero_de_universidades(dados):
+    numero = {'numero_de_universidades': dados['3. University'].nunique()}
+    return numero
+
+
 def obter_amplitude_idade(dados):
     # Verifica as strings de intervalo de idade, transforma em número e retorna o valor mínimo e máximo
     intervalos = dados['1. Age'].str.split('-', expand=True)
@@ -94,5 +92,39 @@ def obter_amplitude_idade(dados):
 
     minimo = int(intervalos.min().min())
     maximo = int(intervalos.max().max())
-    amplitude = {'minimo': minimo, 'maximo': maximo, 'amplitude': maximo - minimo}
+    amplitude = {'minimo': minimo, 'maximo': maximo,
+                 'amplitude': maximo - minimo}
     return amplitude
+
+
+def media_aritmetica_universidade(dados):
+    valores = intrevistados_por_universidade(dados)
+    soma = 0
+    for valor in valores:
+        soma += valor['totalDeItens']
+
+    numeroDeUniversidades = obter_numero_de_universidades(
+        dados)['numero_de_universidades']
+
+    media = soma / numeroDeUniversidades
+    # Retornar apenas o valor inteiro
+    return {'media': int(media)}
+
+
+def separarPorGenero(dados):
+    # Filtra os dados por genero
+    homens = 0
+    mulheres = 0
+    outros = 0
+    for i in dados:
+        if i == '2. Gender':
+            # Filtra os dados por genero
+            genero = dados[i]
+            for i in genero:
+                if i == 'Male':
+                    homens += 1
+                elif i == 'Female':
+                    mulheres += 1
+                else:
+                    outros += 1
+    return {'homens': homens, 'mulheres': mulheres, 'outros': outros}
