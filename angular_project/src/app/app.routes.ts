@@ -6,7 +6,7 @@ import { MediaComponent } from './pages/media/media.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
-    {path: 'home', component: IntervalosComponent},
-    {path: 'caso-de-uso', component: CasoDeUsoComponent},
-    {path: 'media', component: MediaComponent}
+    {path: 'home', component: CasoDeUsoComponent},
+    {path: 'resumo', component: IntervalosComponent},
+    {path: 'algoritmos', component: MediaComponent}
 ];
