@@ -28,7 +28,14 @@ export class IntervalosComponent implements OnInit {
   public valoresDoGraficoPizza: number[] = [];
   public media: number = 0;
 
+  public valoresGraficoDeGenero: number[] = [];
+  public labelsGraficoDeGenero: string[] = [];
+
   public universidades: Universidade[] = [];
+  public numeroDeUniversidades: number = 0;
+  public mediaDeIntervistadosPorUniversidade: number = 0;
+
+  public genero: { masculino: number; feminino: number, outros: number } = {} as any;
 
   constructor(
     private sidebarService: SidebarService,
@@ -52,6 +59,7 @@ export class IntervalosComponent implements OnInit {
     });
     this.obterMediaDeIdade();
     this.obterAmplitude();
+    this.obterGenero();
   }
 
   obterMediaDeIdade() {
@@ -78,7 +86,23 @@ export class IntervalosComponent implements OnInit {
 
   obterUniversidades(){
     this.dataService.getdata('intervalos/universidade').subscribe((res: any) => {
-      this.universidades = res;
+      this.universidades = res[0];
+      this.numeroDeUniversidades = res[1].numero_de_universidades;
+      this.mediaDeIntervistadosPorUniversidade = res[2].media
     });
+  }
+
+  obterGenero(){
+    this.dataService.getdata('intervalos/genero').subscribe((res: any) => {
+      this.genero.masculino = res.homens;
+      this.genero.feminino = res.mulheres;
+      this.genero.outros = res.outros;
+      this.plotarGraficoDeGenero();
+    });
+  }
+
+  plotarGraficoDeGenero() {
+    this.labelsGraficoDeGenero = ['Masculino', 'Feminino', 'Outros'];
+    this.valoresGraficoDeGenero = [this.genero.masculino, this.genero.feminino, this.genero.outros];
   }
 }
