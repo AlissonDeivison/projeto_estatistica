@@ -21,15 +21,29 @@
   }
 
   & .sobre_data{
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     & a {
         text-decoration: none;  
         color: $cor-primaria;
         border: 1px solid $cor-primaria;
         padding: 8px;
-        border-radius: 4px
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        
+        align-self: center;
     }
     & a:visited {
         color: $cor-primaria;
+    }
+    & a:hover {
+        background-color: $cor-primaria;
+        color: white;
+    }
+    & .atencao{
+      color: red;
     }
   }
 
