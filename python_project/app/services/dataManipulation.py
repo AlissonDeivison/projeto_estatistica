@@ -59,9 +59,6 @@ def calcular_media_idade(dados):
     media_geral = dados_filtrados['Media Idade'].mean()
     return int(media_geral)
 
-# Função para calcular a % do genero dos intrevistados
-# def calcular_percentual_genero(dados):
-
 
 def intrevistados_por_universidade(dados):
     # Conta o número de itens em cada universidade
