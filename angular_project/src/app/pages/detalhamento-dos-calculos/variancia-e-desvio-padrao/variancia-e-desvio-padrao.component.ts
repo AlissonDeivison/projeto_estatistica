@@ -26,7 +26,6 @@ export class VarianciaEDesvioPadraoComponent {
   ngOnInit(): void {
     this.carregarDadosDaTabela();
   }
-
   carregarDadosDaTabela() {
     this.dataService.getdata('classes').subscribe((res: any) => {
       this.classes = res.classes;
@@ -77,7 +76,6 @@ export class VarianciaEDesvioPadraoComponent {
     });
     console.log(this.dataSource);
   }
-
   obterAmplitude() {
     this.dataService
       .getdata('intervalos/idade/amplitude')
@@ -85,7 +83,6 @@ export class VarianciaEDesvioPadraoComponent {
         this.amplitude = res.amplitude;
       });
   }
-
   obterMedia() {
     this.dataService.getdata('intervalos/idade/media').subscribe((res: any) => {
       this.media = res.media_geral;
@@ -93,10 +90,14 @@ export class VarianciaEDesvioPadraoComponent {
   }
   calcularXiFiAoQuadrado() {
     for (let i = 0; i < this.dataSource.length; i++) {
-      this.dataSource[i].quadrado_xi_fi = Math.pow(
-        this.dataSource[i].frequencia_vezes_ponto_medio,
-        2
-      );
+      //Xi² * Fi
+      this.dataSource[i].quadrado_xi_fi =
+        Math.pow(this.dataSource[i].ponto_medio, 2) *
+        this.dataSource[i].frequencia;
+      // this.dataSource[i].quadrado_xi_fi = Math.pow(
+      //   this.dataSource[i].frequencia_vezes_ponto_medio,
+      //   2
+      // );
     }
   }
   somarQuadradoXiFi() {

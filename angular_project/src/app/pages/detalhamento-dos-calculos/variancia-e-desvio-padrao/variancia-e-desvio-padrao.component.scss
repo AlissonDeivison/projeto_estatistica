@@ -68,4 +68,14 @@
     }
   }
 
+  & img {
+    align-self: start;
+    width: 60%;
+    height: 100%;
+  }
+  & .exemplo{
+    width: 70%;
+    align-self: end;
+  }
+
 }
