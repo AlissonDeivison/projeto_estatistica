@@ -1,0 +1,37 @@
+@import 'variables';
+
+.conteudo_principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  padding: 0 24px;
+
+  & img {
+    width: 20px;
+    margin: 0 8px 0 8px;
+    align-self: center;
+  }
+
+  & .element {
+    width: 10%;
+  }
+
+  & span {
+    font-size: 16px;
+    font-weight: 700;
+    color: $cor-primaria;
+  }
+
+  & .mediana {
+    width: 50%;
+    align-self: start;
+  }
+
+  & .mediana_exemplo {
+    width: 60%;
+    align-self: end;
+    position: relative;
+    top: -80px;
+  }
+}

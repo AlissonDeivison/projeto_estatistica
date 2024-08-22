@@ -1,0 +1,36 @@
+<div class="conteudo_principal">
+  <p>
+    A <span>mediana</span> é uma medida de posição que indica o valor central de
+    uma série de dados. Para calcular a mediana em uma série de valores
+    organizados em intervalos de classe, primeiro identificamos a classe
+    mediana, que é a classe onde o valor que corresponde à mediana está
+    localizado. Para localizar-mos esse valor dividimos o valor de N (número
+    total de elementos) por 2.
+  </p>
+  <img
+    src="assets/elements/fi_2.svg"
+    alt="soma da frequencia dividido por 2"
+    class="element"
+  />
+  <p>
+    Uma vez obtido esse valor precisamos identidicar onde ele se encontra na
+    nossa série de valores, no nosso caso o cáluclo seria a razão de 1970 / 2
+    obtendo o valor <span>985</span>. Esse valor nos indica que a mediana está
+    localizada na classe <span>18</span>
+    <img src="assets/elements/barra_intervalo.svg" alt="barra de intervalo" />
+    <span>23</span>
+  </p>
+  <p>
+    Uma vez obtida a classe mediana precisamos encontrar os seguintes itens:
+  </p>
+  <ol>
+    <li>Limite inferior da Classe modal: <span>{{medianaData.limite_inferior}}</span></li>
+    <li>Valor que divide a série ao meio: <span>985</span></li>
+    <li>Frequência da Classe anterior: <span>{{medianaData.frequencia_anterior}}</span></li>
+    <li>Intervalo da Classe: <span>{{medianaData.intervalo}}</span></li>
+    <li>Frequência da Classe: <span>{{medianaData.itens_da_classe}}</span></li>
+  </ol>
+  <p>Agora é só colocar na fórmula:</p>
+  <img src="assets/elements/formula_mediana.svg" alt="formula da mediana" class="mediana">
+  <img src="assets/elements/exemplo_mediana.svg" alt="formula da mediana" class="mediana_exemplo">
+</div>
