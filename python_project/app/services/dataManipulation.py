@@ -8,14 +8,10 @@ import matplotlib.pyplot as plt
 def carregar_dados():
     return pd.read_csv('data/data.csv')
 # Função para carregar a média de um intervalo
-
-
 def calcular_media_intervalo(intervalo):
     if '-' in intervalo:
         minimo, maximo = map(int, intervalo.split('-'))
         return (minimo + maximo+1) / 2
-
-
 # Função para contar os intervalos, filtrando apenas os intervalos válidos
 def contar_intervalos(dados):
     # Filtra apenas os intervalos válidos (aqueles que contêm '-')
@@ -47,8 +43,6 @@ def contar_intervalos(dados):
         })
 
     return intervalos_formatados
-
-
 # Função para calcular a média geral das idades
 def calcular_media_idade(dados):
     # Aplica a função calcular_media_intervalo para cada valor na coluna '1. Age'
@@ -58,7 +52,6 @@ def calcular_media_idade(dados):
     # Calcula a média geral das idades, ignorando valores nulos
     media_geral = dados_filtrados['Media Idade'].mean()
     return int(media_geral)
-
 
 def intrevistados_por_universidade(dados):
     # Conta o número de itens em cada universidade
@@ -73,11 +66,9 @@ def intrevistados_por_universidade(dados):
         })
     return universidades_formatadas
 
-
 def obter_numero_de_universidades(dados):
     numero = {'numero_de_universidades': dados['3. University'].nunique()}
     return numero
-
 
 def obter_amplitude_idade(dados):
     # Verifica as strings de intervalo de idade, transforma em número e retorna o valor mínimo e máximo
@@ -89,7 +80,6 @@ def obter_amplitude_idade(dados):
     amplitude = {'minimo': minimo, 'maximo': maximo,
                  'amplitude': maximo - minimo}
     return amplitude
-
 
 def media_aritmetica_universidade(dados):
     valores = intrevistados_por_universidade(dados)
@@ -103,7 +93,6 @@ def media_aritmetica_universidade(dados):
     media = soma / numeroDeUniversidades
     # Retornar apenas o valor inteiro
     return {'media': int(media)}
-
 
 def separarPorGenero(dados):
     # Filtra os dados por genero
@@ -141,3 +130,30 @@ def obter_moda(dados):
     limite_superior = classe_modal['classe_modal']['limiteSuperior']
     moda = (limite_inferior + limite_superior) / 2
     return {'moda': moda}
+
+def obter_mediana(dados):
+    #Intervalos:
+    intervalos = contar_intervalos(dados)
+    #Número total de itens
+    n = sum([intervalo['totalDeItens'] for intervalo in intervalos])
+    #Posição da mediana
+    posicao_mediana = n / 2
+    #Classe mediana:
+    
+    for intervalo in intervalos:
+        if posicao_mediana <= intervalo['totalDeItens']:
+            classe_mediana = intervalo
+            break
+        else:
+            posicao_mediana -= intervalo['totalDeItens']
+    #Limites da classe mediana
+    limite_inferior = classe_mediana['limiteInferior']
+    limite_superior = classe_mediana['limiteSuperior']
+    itens_da_classe = classe_mediana['totalDeItens']
+    intervalo = limite_superior + 1  - limite_inferior
+    frequencia_anterior = sum([intervalo['totalDeItens'] for intervalo in intervalos if intervalo['limiteInferior'] < limite_inferior])
+    
+    mediana = limite_inferior + ((posicao_mediana - frequencia_anterior) * intervalo ) / itens_da_classe
+    mediana = round(mediana, 2)
+    
+    return {'mediana': posicao_mediana, 'limite_inferior': limite_inferior, 'itens_da_classe': itens_da_classe, 'intervalo': intervalo, 'frequencia_anterior': frequencia_anterior, 'mediana': mediana}

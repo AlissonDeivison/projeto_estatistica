@@ -104,3 +104,9 @@ def obter_moda():
     classeModal = dataManipulation.obter_classe_modal(dados)
     moda = dataManipulation.obter_moda(dados)
     return jsonify(classeModal, moda)
+
+@main.route('/api/intervalos/mediana', methods=['GET'])
+def obter_mediana():
+    dados = dataManipulation.carregar_dados()
+    mediana = dataManipulation.obter_mediana(dados)
+    return jsonify(mediana)
