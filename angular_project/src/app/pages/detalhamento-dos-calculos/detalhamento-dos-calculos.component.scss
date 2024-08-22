@@ -1,7 +1,18 @@
+@import 'variables';
+
 .content {
   justify-content: center;
   display: flex;
   flex-direction: column;
   transition: padding-left 0.3s;
   padding: 24px;
+
+  & h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    background-color: $cor-primaria;
+    padding: 24px;
+  }
 }
