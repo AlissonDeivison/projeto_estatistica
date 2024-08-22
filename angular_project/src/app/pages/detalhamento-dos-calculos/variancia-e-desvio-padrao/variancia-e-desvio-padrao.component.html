@@ -1,0 +1,50 @@
+<div class="conteudo_principal">
+  <p>
+    Existem diferentes formas de obter a variância de desvio padrão, você deve
+    observar se a sua série possui dados não agrupados, dados agrupados e se
+    forem agrupados se possuem intevalos de classe ou não. No nosso caso os
+    dados estão agrupados e nós possuimos intervalos de classe, então precisamos
+    somar a nossa tablema lá do início uma nova coluna
+  </p>
+
+  <table class="container">
+    <thead>
+      <tr>
+        <th>i</th>
+        <th>Intervalo da Classe</th>
+        <th>F<span>i</span></th>
+        <th>X<span>i</span></th>
+        <th>F<span>i</span> <span>.</span> X<span>i</span></th>
+        <th>X<span>i</span>F<span>i</span><span class="exp">2</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of dataSource">
+        <td>{{ row.numero_da_classe }}</td>
+        <td>
+          {{ row.limiteInferior }}
+          <span
+            ><img
+              src="/assets/elements/barra_intervalo.svg"
+              alt="Barra de intervalo"
+          /></span>
+          {{ row.limiteSuperior + 1 }}
+        </td>
+        <td>{{ row.frequencia }}</td>
+        <td>{{ row.ponto_medio }}</td>
+        <td>{{ row.frequencia_vezes_ponto_medio }}</td>
+        <td>{{row.quadrado_xi_fi}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Número de classes: 3</td>
+        <td>Amplitude total: {{ amplitude }}</td>
+        <td>{{ totalFrequencia }}</td>
+        <td></td>
+        <td>{{ totalFrequenciaVezesPontoMedio }}</td>
+        <td>{{ somaQuadradoXiFi }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
