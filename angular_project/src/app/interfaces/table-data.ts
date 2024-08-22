@@ -6,4 +6,5 @@ export interface TableData {
     frequencia_vezes_ponto_medio: number;
     limiteInferior: number;
     limiteSuperior: number;
+    desvio: number;
 }
