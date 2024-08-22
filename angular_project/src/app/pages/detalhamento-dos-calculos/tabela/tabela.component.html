@@ -6,6 +6,7 @@
       <th>F<span>i</span></th>
       <th>X<span>i</span></th>
       <th>F<span>i</span> <span>.</span> X<span>i</span></th>
+      <th>d<span>i</span></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
       <td>{{ row.frequencia }}</td>
       <td>{{ row.ponto_medio }}</td>
       <td>{{ row.frequencia_vezes_ponto_medio }}</td>
+      <td>{{ row.desvio }}</td>
     </tr>
   </tbody>
   <tfoot>
@@ -26,4 +28,14 @@
       <td>{{ totalFrequenciaVezesPontoMedio }}</td>
     </tr>
 </table>
-<p>Para calcular a média aritmética de uma série de valores agrupados em intervalos de classe, multiplicamos o ponto médio de cada intervalo pela respectiva frequência, somamos todos esses produtos e, em seguida, dividimos o resultado pelo número total de observações. Portanto, a média desta amostragem é: {{media}}</p>
+<div class="media_aritmetica">
+  <img src="/assets/elements/formula_media_aritmetica.svg" alt="formula da média">
+  <div class="paragrafos">
+    <p>Para calcular a média aritmética de uma série de valores agrupados em intervalos de classe, multiplicamos o ponto médio de cada intervalo pela respectiva frequência, somamos todos esses produtos e, em seguida, dividimos o resultado pelo número total de observações.</p>
+    <p>Portanto, a média desta amostragem é: <span>{{media}}</span>.</p>
+    <p>
+      A partir desse valor podemos calcular o desvio em relação a média de cada um dos nossos intervalos, para isso basta calular a diferença do ponto médio da classe pela média da amostragem:
+    </p>
+    <img src="/assets/elements/formula_desvio_em_relacao_a_media.svg" alt="formula de desvio em relacao a media">
+  </div>
+</div>

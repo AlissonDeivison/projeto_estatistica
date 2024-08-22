@@ -28,42 +28,62 @@ export class TabelaComponent implements OnInit {
   carregarDadosDaTabela() {
     this.dataService.getdata('classes').subscribe((res: any) => {
       this.classes = res.classes;
+      let media = this.obterMedia();
       for (let i = 0; i < this.classes.length; i++) {
         this.dataSource.push({
           numero_da_classe: i + 1,
+
           intervalo_de_classe: this.classes[i].intervalo,
+
           frequencia: this.classes[i].totalDeItens,
+
           ponto_medio:
             (this.classes[i].limiteInferior +
               this.classes[i].limiteSuperior +
               1) /
             2,
+
           frequencia_vezes_ponto_medio:
             ((this.classes[i].limiteInferior +
               this.classes[i].limiteSuperior +
               1) /
               2) *
             this.classes[i].totalDeItens,
+
           limiteSuperior: this.classes[i].limiteSuperior,
+
           limiteInferior: this.classes[i].limiteInferior,
+
+          desvio:
+            (this.classes[i].limiteInferior +
+              this.classes[i].limiteSuperior +
+              1) /
+              2 -
+            22, //Harded coded value
         });
         this.totalFrequencia += this.classes[i].totalDeItens;
         this.totalFrequenciaVezesPontoMedio +=
-          ((this.classes[i].limiteInferior + this.classes[i].limiteSuperior + 1) /
+          ((this.classes[i].limiteInferior +
+            this.classes[i].limiteSuperior +
+            1) /
             2) *
           this.classes[i].totalDeItens;
       }
+      this.obterAmplitude();
+      this.obterMedia();
     });
-    this.obterAmplitude();
-    this.obterMedia();
+
+    console.log(this.dataSource);
   }
-  obterAmplitude(){
-    this.dataService.getdata('intervalos/idade/amplitude').subscribe((res: any) => {
-      this.amplitude = res.amplitude;
-    });
+  obterAmplitude() {
+    this.dataService
+      .getdata('intervalos/idade/amplitude')
+      .subscribe((res: any) => {
+        this.amplitude = res.amplitude;
+      });
   }
 
-  obterMedia(){
+  obterMedia() {
     this.dataService.getdata('intervalos/idade/media').subscribe((res: any) => {
       this.media = res.media_geral;
     });
