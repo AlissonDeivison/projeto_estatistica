@@ -60,7 +60,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  padding: 24px;
+  padding: 0 24px;
 
   & img {
     width: 50%;
@@ -78,7 +78,7 @@
       text-align: justify;
 
       & span {
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 700;
         color: $cor-primaria;
       }
