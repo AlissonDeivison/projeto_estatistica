@@ -20,7 +20,6 @@ export class DataService {
     return this.http.post(`${this.apiUrl}/${endPoint}`, {nome, senha});
   }
 
-
   logout(){
     localStorage.removeItem('token');
   }
