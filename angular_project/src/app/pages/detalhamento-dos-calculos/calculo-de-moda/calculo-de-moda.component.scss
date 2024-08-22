@@ -1,0 +1,27 @@
+@import 'variables';
+
+.conteudo_principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & p {
+
+    & img {
+      width: 20px;
+      margin: 0 8px 0 8px;
+    }
+
+    & span {
+      font-size: 22px;
+      font-weight: 700;
+      color: $cor-primaria;
+    }
+  }
+
+  & img {
+    align-self: center;
+    width: 60%;
+    height: 100%;
+  }
+}
