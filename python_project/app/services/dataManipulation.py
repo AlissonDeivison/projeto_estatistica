@@ -126,10 +126,18 @@ def separarPorGenero(dados):
 def popular_tabela(dados):
     # Filtra os dados por genero
     classes = contar_intervalos(dados)
+    # desvio = calcular_media_idade(dados) - classes['ponto_medio']
     return {'classes': classes}
     
+def obter_classe_modal(dados):
+    classes = popular_tabela(dados)['classes']
+    classe_modal = max(classes, key=lambda x: x['totalDeItens'])
+    return {'classe_modal': classe_modal}
+
     
-    
-    
-    
-        
+def obter_moda(dados):
+    classe_modal = obter_classe_modal(dados)
+    limite_inferior = classe_modal['classe_modal']['limiteInferior']
+    limite_superior = classe_modal['classe_modal']['limiteSuperior']
+    moda = (limite_inferior + limite_superior) / 2
+    return {'moda': moda}

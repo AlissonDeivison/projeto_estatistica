@@ -32,7 +32,6 @@ def get_media_geral():
 
     dados = dataManipulation.carregar_dados()
     media_geral = dataManipulation.calcular_media_idade(dados)
-   
 
     media_geral_json = {'media_geral': media_geral}
     return jsonify(media_geral_json)
@@ -70,17 +69,20 @@ def login():
 def get_universidades():
     dados = dataManipulation.carregar_dados()
     universidades = dataManipulation.intrevistados_por_universidade(dados)
-    numero_de_universidades = dataManipulation.obter_numero_de_universidades(dados)
+    numero_de_universidades = dataManipulation.obter_numero_de_universidades(
+        dados)
     media = dataManipulation.media_aritmetica_universidade(dados)
     return jsonify(universidades, numero_de_universidades, media)
+
 
 @main.route('/api/intervalos/idade/amplitude', methods=['GET'])
 def obter_amplitude_idade():
     dados = dataManipulation.carregar_dados()
     amplitude = dataManipulation.obter_amplitude_idade(dados)
     print(amplitude)
-    
+
     return jsonify(amplitude)
+
 
 @main.route('/api/intervalos/genero', methods=['GET'])
 def separarPorGenero():
@@ -88,8 +90,17 @@ def separarPorGenero():
     generos = dataManipulation.separarPorGenero(dados)
     return jsonify(generos)
 
+
 @main.route('/api/classes', methods=['GET'])
 def popular_tabela():
     dados = dataManipulation.carregar_dados()
     tabela = dataManipulation.popular_tabela(dados)
+
     return jsonify(tabela)
+
+@main.route('/api/intervalos/moda', methods=['GET'])
+def obter_moda():
+    dados = dataManipulation.carregar_dados()
+    classeModal = dataManipulation.obter_classe_modal(dados)
+    moda = dataManipulation.obter_moda(dados)
+    return jsonify(classeModal, moda)
