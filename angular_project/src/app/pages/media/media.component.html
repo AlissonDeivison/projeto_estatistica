@@ -2,7 +2,9 @@
   <div class="content">
     <h1>Algoritmos de manipulação dos dados</h1>
     <p>
-      Nossos dados são carregados a partir de um arquivo CSV, e para manipulá-los utilizamos alguns algoritmos, abaixo listamos os principais algoritmos utilizados para manipulação dos dados.
+      Nossos dados são carregados a partir de um arquivo CSV, e para
+      manipulá-los utilizamos alguns algoritmos, abaixo listamos os principais
+      algoritmos utilizados para manipulação dos dados.
     </p>
     <div class="codigos">
       <mat-accordion>
@@ -163,6 +165,70 @@
                     <span class="string">'mulheres'</span>: mulheres,
                     <span class="string">'outros'</span>: outros
                 <span class="operator">&#125;</span>
+            </code>
+          </pre>
+        </mat-expansion-panel>
+
+        <!-- Cálculo da mediana -->
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Cálculo da mediana</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> obter_mediana(dados):
+                <span class="comment"># Intervalos:</span>
+                intervalos = contar_intervalos(dados)
+                <span class="comment"># Número total de itens</span>
+                n = <span class="keyword">sum</span>([intervalo[<span class="string">'totalDeItens'</span>]<span class="keyword">for</span> intervalo <span class="keyword">in</span> intervalos])
+                <span class="comment"># Posição da mediana</span>
+                posicao_mediana = n / <span class="number">2</span>
+                <span class="comment"># Classe mediana:</span>
+                
+                <span class="keyword">for</span> intervalo <span class="keyword">in</span> intervalos:
+                    <span class="keyword">if</span> posicao_mediana <= intervalo[<span class="string">'totalDeItens'</span>]:
+                        classe_mediana = intervalo
+                        <span class="keyword">break</span>
+                    <span class="keyword">else</span>:
+                        posicao_mediana -= intervalo[<span class="string">'totalDeItens'</span>]
+                <span class="comment"># Limites da classe mediana</span>
+                limite_inferior = classe_mediana[<span class="string">'limiteInferior'</span>]
+                limite_superior = classe_mediana[<span class="string">'limiteSuperior'</span>]
+                itens_da_classe = classe_mediana[<span class="string">'totalDeItens'</span>]
+                intervalo = limite_superior + <span class="number">1</span>  - limite_inferior
+                
+                frequencia_anterior = <span class="keyword">sum</span>([intervalo[<span class="string">'totalDeItens'</span>] <span class="keyword">for</span> 
+                intervalo <span class="keyword">in</span> intervalos <span class="keyword">if</span> intervalo[<span class="string">'limiteInferior'</span>] < limite_inferior])
+                
+                mediana = limite_inferior + ((posicao_mediana - frequencia_anterior) * intervalo ) 
+                / itens_da_classe
+                mediana = <span class="keyword">round</span>(mediana, <span class="number">2</span>)
+                
+                <span class="keyword">return</span> <span class="operator">&#123;</span>
+                    <span class="string">'mediana'</span>: posicao_mediana,
+                    <span class="string">'limite_inferior'</span>: limite_inferior,
+                    <span class="string">'itens_da_classe'</span>: itens_da_classe,
+                    <span class="string">'intervalo'</span>: intervalo,
+                    <span class="string">'frequencia_anterior'</span>: frequencia_anterior,
+                    <span class="string">'mediana'</span>: mediana
+                <span class="operator">&#125;</span>
+            </code>
+          </pre>
+        </mat-expansion-panel>
+
+         <!-- Cálculo da mediana -->
+         <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Cálculo de Moda</mat-panel-title>
+          </mat-expansion-panel-header>
+          <pre>
+            <code>
+              <span class="keyword">def</span> obter_moda(dados):
+                classe_modal = obter_classe_modal(dados)
+                limite_inferior = classe_modal[<span class="string">'classe_modal'</span>][<span class="string">'limiteInferior'</span>]
+                limite_superior = classe_modal[<span class="string">'classe_modal'</span>][<span class="string">'limiteSuperior'</span>]
+                moda = (limite_inferior + limite_superior) / <span class="number">2</span>
+                <span class="keyword">return</span> <span class="operator">&#123;</span><span class="string">'moda'</span>: moda<span class="operator">&#125;</span>
             </code>
           </pre>
         </mat-expansion-panel>
