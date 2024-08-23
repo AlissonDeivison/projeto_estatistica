@@ -74,7 +74,6 @@ export class VarianciaEDesvioPadraoComponent {
       this.somarQuadradoXiFi();
 
     });
-    console.log(this.dataSource);
   }
   obterAmplitude() {
     this.dataService
@@ -103,7 +102,6 @@ export class VarianciaEDesvioPadraoComponent {
   somarQuadradoXiFi() {
     for (let i = 0; i < this.dataSource.length; i++) {
       this.somaQuadradoXiFi += this.dataSource[i].quadrado_xi_fi;
-      console.log(this.dataSource[i].quadrado_xi_fi);
     }
   }
 }

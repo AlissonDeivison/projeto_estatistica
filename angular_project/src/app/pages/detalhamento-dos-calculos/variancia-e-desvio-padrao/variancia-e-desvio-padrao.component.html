@@ -1,6 +1,6 @@
 <div class="conteudo_principal">
   <p>
-    Existem diferentes formas de obter a variância de desvio padrão, você deve
+    Existem diferentes formas de obter a variância e desvio padrão, você deve
     observar se a sua série possui dados não agrupados, dados agrupados e se
     forem agrupados se possuem intevalos de classe ou não. No nosso caso os
     dados estão agrupados e nós possuimos intervalos de classe, então precisamos
@@ -33,7 +33,7 @@
         <td>{{ row.frequencia }}</td>
         <td>{{ row.ponto_medio }}</td>
         <td>{{ row.frequencia_vezes_ponto_medio }}</td>
-        <td>{{row.quadrado_xi_fi}}</td>
+        <td>{{ row.quadrado_xi_fi }}</td>
       </tr>
     </tbody>
     <tfoot>
@@ -47,6 +47,15 @@
       </tr>
     </tfoot>
   </table>
-  <img src="assets/elements/formula_variancia.svg" alt="Formula da variancia">
-  <img src="assets/elements/exemplo_variancia.svg" alt="Exemplo da variancia" class="exemplo">
+  <img src="assets/elements/formula_variancia.svg" alt="Formula da variancia" />
+  <img
+    src="assets/elements/exemplo_variancia.svg"
+    alt="Exemplo da variancia"
+    class="exemplo"
+  />
+  <p>
+    Portanto, a minha variância é o meu valor do <span>s</span>
+    <span class="exp">2</span> e meu desvio padrão é o próprio <span>s</span>.
+  </p>
+  <p>Sendo assim a variância mede o quão espalhados os valores estão em relação à média, já o desvio padrão é a raiz quadrada da variância. É expresso nas mesmas unidades dos dados originais, tornando-o mais fácil de interpretar em relação à dispersão dos dados, isto é ambos se complementam e sua finalidade é verificar se esses dados observados estão agrupados ou não.</p>
 </div>
