@@ -1,0 +1,22 @@
+<div class="conteudo_principal">
+  <p>
+    O Coeficiente de Variação (CV) é uma medida que ajuda a entender a dispersão
+    dos dados em relação à média, expressa como uma porcentagem. Ele é calculado
+    dividindo o desvio padrão pela média e multiplicando o resultado por 100.
+  </p>
+  <p>Para obter o coeficiente de variação precisamos dos seguintes itens:</p>
+  <ol>
+    <li>
+      Desvio padrão:
+      <span>{{ desvioData.desvio_padrao }}</span>
+    </li>
+    <li>
+      Média Aritmética:
+      <span>{{ desvioData.media }}</span>
+    </li>
+  </ol>
+  <p>Agora é só colocar na fórmula:</p>
+  <img src="assets/elements/formula_cv.svg" alt="formula cv" />
+  <img src="assets/elements/exemplo_cv.svg" alt="formula cv" class="exemplo" />
+  <p>Uma vez que o nosso Coeficiente de variação é <span>{{coeficienteDeVariacao}}%</span> podemos concluir que nossa média não é muito representativa.</p>
+</div>
