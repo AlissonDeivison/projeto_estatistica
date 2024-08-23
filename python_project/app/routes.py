@@ -110,3 +110,10 @@ def obter_mediana():
     dados = dataManipulation.carregar_dados()
     mediana = dataManipulation.obter_mediana(dados)
     return jsonify(mediana)
+
+@main.route('/api/intervalos/coeficiente', methods=['GET'])
+def obter_coeficiente():
+    dados = dataManipulation.carregar_dados()
+    coeficiente = dataManipulation.calcuLo_coeficiente_de_variacao(dados)
+    desvioPadrao = dataManipulation.obter_desvio_padrao(dados)
+    return jsonify({'coeficiente': coeficiente, 'desvioData': desvioPadrao})
