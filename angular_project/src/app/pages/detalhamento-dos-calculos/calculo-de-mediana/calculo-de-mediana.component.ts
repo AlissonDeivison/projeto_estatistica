@@ -21,7 +21,6 @@ export class CalculoDeMedianaComponent implements OnInit {
   obterMediana() {
     this.dataService.getdata('intervalos/mediana').subscribe((res: any) => {
       this.medianaData = res;
-      console.log(this.medianaData);
     });
   }
 }
