@@ -73,7 +73,6 @@ export class TabelaComponent implements OnInit {
       this.obterMedia();
     });
 
-    console.log(this.dataSource);
   }
   obterAmplitude() {
     this.dataService
